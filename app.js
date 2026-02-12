@@ -8,7 +8,7 @@ const PORT = 3000;
 app.use(cors({
   origin: 'https://dara-sourceful-giselle.ngrok-free.dev',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
 }));
 
 app.use(express.json());
