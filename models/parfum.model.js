@@ -1,10 +1,35 @@
-class Parfum{
-    constructor(id, name, imgUrl, price) {
-        this.id = id;
-        this.name = name;
-        this.imgUrl = imgUrl;
-        this.price = price;
-    }
-}
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db/db');
+
+const Parfum = sequelize.define('Parfum', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  brand: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  imgUrl: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
+  price: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  notes: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+}, {
+  tableName: 'parfums',
+  timestamps: false,
+});
 
 module.exports = Parfum;

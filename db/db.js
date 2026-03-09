@@ -1,10 +1,15 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./database.db', (err) => {
-  if (err) {
-    console.error('Database connection error:', err.message);
-  } else {
-    console.log('Connected to SQLite database.');
-  }
-});
+const { Sequelize } = require('sequelize');
 
-module.exports = db;   
+const sequelize = new Sequelize(
+  process.env.DB_NAME || 'essence_db',
+  process.env.DB_USER || 'postgres',
+  process.env.DB_PASSWORD || 'password',
+  {
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres',
+    logging: false, // set to console.log to see SQL queries
+  }
+);
+
+module.exports = sequelize;
